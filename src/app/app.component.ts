@@ -1,5 +1,6 @@
 import { Component, HostBinding } from '@angular/core';
 import { ThemeService } from './services/theme.service';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,66 @@ import { ThemeService } from './services/theme.service';
 export class AppComponent {
   @HostBinding('class.dark') isDarkMode: boolean | undefined;
   events: any;
+  displayBasic: boolean = false;
+  form : FormGroup = new FormGroup({
+    email : new FormControl(),
+    subject : new FormControl(),
+    message : new FormControl()
+  });
+  images = [
+    {
+      itemImageSrc: 'login.JPG',
+      alt: 'Description for Image 1',
+      title: 'Title 1',
+    },
+    {
+      itemImageSrc: 'register.JPG',
+      alt: 'Description for Image 1',
+      title: 'Title 1',
+    },
+    {
+      itemImageSrc: 'login.JPG',
+      alt: 'Description for Image 1',
+      title: 'Title 1',
+    },
+    {
+      itemImageSrc: 'login.JPG',
+      alt: 'Description for Image 1',
+      title: 'Title 1',
+    },
+    {
+      itemImageSrc: 'register.JPG',
+      alt: 'Description for Image 1',
+      title: 'Title 1',
+    },
+    {
+      itemImageSrc: 'login.JPG',
+      alt: 'Description for Image 1',
+      title: 'Title 1',
+    },
+  ];
 
-
+  projects = [
+    {
+      title: 'JOBS',
+      description: ` <p>
+      JOBS is a web platform designed to connect job applicants with
+      companies offering job opportunities. The platform provides a
+      seamless experience for both applicants and companies, facilitating
+      the job application process.
+    </p>
+    <p>Here some of it's features:</p>
+    <li>User authentication for both applicants and companies.</li>
+    <li>Applicant profiles with resume upload functionality.</li>
+    <li>File upload such as company's logo, user's profile picture and resumes</li>
+    <li>Job posting and management for companies.</li>
+    <li>Job application and tracking for applicants.</li>
+    <li>Real-time notifications for application updates.</li>
+    <li>Search and filtering options for job listings.</li>
+    <li>Negotiation System: Facilitate communication between applicants and companies, allowing negotiation on where and when to have the interview.</li>
+`,
+    },
+  ];
   constructor(private themeService: ThemeService) {
     this.themeService.getDarkMode().subscribe((darkMode: boolean) => {
       this.isDarkMode = darkMode;
@@ -52,7 +111,6 @@ export class AppComponent {
         tools: ['Laravel', 'Html 5', 'CSS3', 'JavaScript', 'MySQL'],
       },
     ];
-
   }
 
   toggleDarkMode() {

@@ -93,7 +93,7 @@
 
 <section>
   <header class="flex flex-col items-center mt-20">
-    <div class="font-bold text-[46px]">MY EXPERIENCE</div>
+    <div class="font-bold text-[46px] uppercase">MY EXPERIENCE</div>
     <div class="text-center w-[50vw] text-custom-grey">
       A snapshot of my professional journey. Dive into impactful internships and
       work experiences that shape my expertise. Each role contributes to a
@@ -118,7 +118,7 @@
 
 <section>
   <header class="flex flex-col items-center mt-20">
-    <div class="font-bold text-[46px]">My Projects</div>
+    <div class="font-bold text-[46px] uppercase">My Projects</div>
     <div class="text-center w-[50vw] text-custom-grey">
       A blend of my academic and personal projects, showcasing a passion for
       problem-solving and creativity.
@@ -126,12 +126,191 @@
   </header>
 
   <!-- Projects cards -->
-  <div class="flex place-content-center">
-    <div class="flex w-[95vw]">
-      <div class="basis-[45%]">
-      hhh
+  <div class="flex place-content-center mt-10" *ngIf="images">
+    <div
+      class="flex w-[95vw] p-5 rounded-[21px]"
+      style="background-color: #212121"
+    >
+      <div class="basis-[45%] custom-gallery">
+        <p-galleria
+          [value]="images"
+          [containerStyle]="{ 'max-width': '100%' }"
+          [numVisible]="4"
+          [circular]="true"
+          [showItemNavigators]="true"
+          [showThumbnails]="true"
+        >
+          <ng-template pTemplate="item" let-item>
+            <img
+              [src]="'/assets/projects_images/JOBS/' + item.itemImageSrc"
+              style=" display: block"
+            />
+          </ng-template>
+          <ng-template pTemplate="thumbnail" let-item>
+            <div>
+              <img
+                [src]="'/assets/projects_images/JOBS/' + item.itemImageSrc"
+                style="display: block"
+              />
+            </div>
+          </ng-template>
+        </p-galleria>
       </div>
-      <div class="basis-[55%] bg-green-500">aefaef</div>
+      <div class="basis-[55%]">
+        <div class="uppercase font-bold text-[30px] flex ml-[50%]">
+          jobs
+          <img src="../assets/icons/dark mode icons/External Link.svg" alt="" />
+        </div>
+        <div
+          class="text-[20px] text-custom-grey p-7"
+          [innerHTML]="projects[0].description"
+        ></div>
+
+        <div class="flex pl-7 gap-3">
+          <div
+            class="bg-tool-bg border-tool-border border rounded-[5px] flex p-2 items-center gap-2"
+          >
+            <img
+              src="../assets/icons/tools/Angular.svg"
+              height="30"
+              width="30"
+              alt=""
+            />
+            <div class="uppercase">angular</div>
+          </div>
+          <div
+            class="bg-tool-bg border-tool-border border rounded-[5px] flex p-2 items-center gap-2"
+          >
+            <img
+              src="../assets/icons/tools/Angular.svg"
+              height="30"
+              width="30"
+              alt=""
+            />
+            <div class="uppercase">angular</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<hr class="my-20 w-[50vw] mx-auto" />
+
+<section class="relative text-custom-grey">
+  <img
+    src="../assets/blob/footer_blob.svg"
+    alt="footer_blob"
+    class="absolute pointer-events-none bottom-[-14%] -z-10"
+  />
+  <header class="flex flex-col items-center mt-20">
+    <div class="font-bold text-[46px] uppercase text-white">contact me</div>
+    <div class="text-center w-[50vw]">Reach out and let's work together.</div>
+  </header>
+
+  <div class="flex">
+    <div class="basis-[50vw] p-20 pl-72">
+      <div class="flex flex-col gap-3 mt-14">
+        <div class="flex items-center gap-3">
+          <img
+            src="../assets/icons/dark mode icons/Envelope.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <p>fedihamdi97@gmail.com</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <img
+            src="../assets/icons/dark mode icons/Ringer Volume.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <p>+216 22 247 152</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <img
+            src="../assets/icons/dark mode icons/LinkedIn.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <p>Fedi Hamdi</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <img
+            src="../assets/icons/dark mode icons/GitHub.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <p>Fedi Hamdi</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <img
+            src="../assets/icons/dark mode icons/Location.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <p>Fedi Hamdi</p>
+        </div>
+      </div>
+    </div>
+    <div class="p-24">
+      <p>You can reach me via email or through this form</p>
+
+      <form [formGroup]="form" class="mt-8">
+        <div>
+          <label for=""> Email </label>
+          <input
+            class="w-full px-3 py-2 placeholder-gray-500 text-white rounded-md focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="Email@email.com"
+            formControlName="email"
+          />
+        </div>
+        <div class="mt-6">
+          <label for=""> Subject </label>
+          <input
+            class="w-full px-3 py-2 placeholder-gray-500 text-white rounded-md focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="Subject"
+            formControlName="subject"
+          />
+        </div>
+        <div class="mt-6">
+          <label for=""> Message </label>
+          <textarea
+            class="text-white resize-none h-48 w-full px-3 py-2 placeholder-gray-500 rounded-md focus:outline-none focus:shadow-outline"
+            type="text"
+            placeholder="Message"
+            formControlName="message"
+          >
+          </textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="mt-6 bg-transparent border hover:bg-custom-grey hover:text-black text-white font-bold py-2 px-4 rounded"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="flex justify-around items-center">
+  <img
+    src="../assets/LOGO_FEDI_HAMDI.svg"
+    class="w-28 pl-5"
+    alt="LOGO_FEDI_HAMDI"
+  />
+
+  <p class="text-custom-grey">
+    Copyright © 2023 - Designed By Figma and Built with Angular, Angular
+    Material, NodeJs.
+  </p>
+</footer>

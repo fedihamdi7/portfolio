@@ -6,7 +6,10 @@ import { AppComponent } from './app.component';
 import { TimelineModule } from 'primeng/timeline';
 import { TooltipModule } from 'primeng/tooltip';
 import { CardComponent } from './card/card.component';
-
+import { GalleriaModule } from 'primeng/galleria';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,11 @@ import { CardComponent } from './card/card.component';
     BrowserModule,
     TimelineModule,
     TooltipModule,
-
+    GalleriaModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
