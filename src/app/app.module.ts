@@ -3,12 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
+import { TimelineModule } from 'primeng/timeline';
+import { TooltipModule } from 'primeng/tooltip';
+import { CardComponent } from './card/card.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CardComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    TimelineModule,
+    TooltipModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
