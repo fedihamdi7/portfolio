@@ -16,9 +16,9 @@
       />
       <div class="basis-[500px] flex justify-around max-md:basis-0">
         <div class="flex justify-around w-full max-md:hidden tracking-[.25em]">
-          <a href="#"> EXPERIENCE </a>
-          <a href="#"> PROJECTS </a>
-          <a href="#"> CONTACT </a>
+          <a (click)="scrollToExperience()" class="cursor-pointer"> EXPERIENCE </a>
+          <a (click)="scrollToProjects()" class="cursor-pointer"> PROJECTS </a>
+          <a (click)="scrollToContact()" class="cursor-pointer"> CONTACT </a>
         </div>
         <button
           class="flex transition-transform hover:scale-125 align-middle"
@@ -91,7 +91,7 @@
   class="absolute pointer-events-none"
 />
 
-<section>
+<section #experience>
   <header class="flex flex-col items-center mt-20">
     <div class="font-bold text-[46px] uppercase">MY EXPERIENCE</div>
     <div class="text-center w-[50vw] text-custom-grey">
@@ -126,7 +126,7 @@
   </header>
 
   <!-- Projects cards -->
-  <div class="flex place-content-center mt-10" *ngIf="images">
+  <div class="flex place-content-center mt-10" *ngIf="images" #projects_section>
     <div
       class="flex w-[95vw] p-5 rounded-[21px]"
       style="background-color: #212121"
@@ -195,7 +195,7 @@
   </div>
 </section>
 
-<hr class="my-20 w-[50vw] mx-auto" />
+<hr class="my-20 w-[50vw] mx-auto" #contact />
 
 <section class="relative text-custom-grey">
   <img
@@ -314,3 +314,4 @@
     Material, NodeJs.
   </p>
 </footer>
+<p-scrollTop></p-scrollTop>

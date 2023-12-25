@@ -10,6 +10,8 @@ import { GalleriaModule } from 'primeng/galleria';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ButtonModule } from 'primeng/button';
+import { ScrollTopModule } from 'primeng/scrolltop';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     BrowserAnimationsModule,
     ButtonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollTopModule
   ],
   providers: [],
   bootstrap: [AppComponent]

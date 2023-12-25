@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, ElementRef, HostBinding, ViewChild } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -115,5 +115,20 @@ export class AppComponent {
 
   toggleDarkMode() {
     this.themeService.toggleDarkMode();
+  }
+
+
+  @ViewChild('experience') experience: ElementRef | undefined;
+  @ViewChild('projects_section') projects_section: ElementRef | undefined;
+  @ViewChild('contact') contact: ElementRef | undefined;
+
+  scrollToExperience() {
+    this.experience!.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+  scrollToProjects() {
+    this.projects_section!.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+  scrollToContact() {
+    this.contact!.nativeElement.scrollIntoView({ behavior: 'smooth' });
   }
 }
