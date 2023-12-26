@@ -4,7 +4,7 @@
   class="absolute right-0 pointer-events-none"
 />
 
-<section class="">
+<section class="sticky top-0 z-50">
   <div
     class="bg-teal-600 text-white p-5 font-semibold text-lg shadow-lg dark:bg-black"
   >
@@ -16,7 +16,9 @@
       />
       <div class="basis-[500px] flex justify-around max-md:basis-0">
         <div class="flex justify-around w-full max-md:hidden tracking-[.25em]">
-          <a (click)="scrollToExperience()" class="cursor-pointer"> EXPERIENCE </a>
+          <a (click)="scrollToExperience()" class="cursor-pointer">
+            EXPERIENCE
+          </a>
           <a (click)="scrollToProjects()" class="cursor-pointer"> PROJECTS </a>
           <a (click)="scrollToContact()" class="cursor-pointer"> CONTACT </a>
         </div>
@@ -51,8 +53,18 @@
       <div class="mt-20">
         <div class="flex">
           <!--  TODO  : add links  -->
-          <img src="../assets/icons/dark mode icons/LinkedIn.svg" alt="" />
-          <img src="../assets/icons/dark mode icons/GitHub.svg" alt="" />
+          <a
+            class="hover:scale-110 transition-all"
+            href="https://www.linkedin.com/in/fedi-hamdi-505706212/"
+            target="_blank"
+            ><img src="../assets/icons/dark mode icons/LinkedIn.svg" alt=""
+          /></a>
+          <a
+            class="hover:scale-110 transition-all"
+            href="https://github.com/fedihamdi7"
+            target="_blank"
+            ><img src="../assets/icons/dark mode icons/GitHub.svg" alt=""
+          /></a>
         </div>
         <div class="mt-10">
           <button
@@ -69,21 +81,11 @@
     </div>
   </div>
 </section>
-<!-- TODO : make this bounce animation -->
-<div class="flex justify-center mt-20">
+<div class="flex justify-center mt-20 bounce">
   <span class="material-symbols-rounded text-[50px]"
     >keyboard_double_arrow_down</span
   >
 </div>
-
-<!-- middle blob -->
-<!-- <img
-  src="../assets/blob/mid_blob.svg"
-  alt="mid_blob"
-  class="absolute pointer-events-none -bottom-40"
-/> -->
-
-<!-- MY EXPERIENCE -->
 
 <img
   src="../assets/blob/experience_blob.svg"
@@ -116,7 +118,7 @@
   </p-timeline>
 </section>
 
-<section>
+<section #projects_section>
   <header class="flex flex-col items-center mt-20">
     <div class="font-bold text-[46px] uppercase">My Projects</div>
     <div class="text-center w-[50vw] text-custom-grey">
@@ -126,73 +128,83 @@
   </header>
 
   <!-- Projects cards -->
-  <div class="flex place-content-center mt-10" *ngIf="images" #projects_section>
+  <div class="flex place-content-center mt-10" *ngFor="let project of projects">
     <div
       class="flex w-[95vw] p-5 rounded-[21px]"
       style="background-color: #212121"
     >
-      <div class="basis-[45%] custom-gallery">
+      <div class="basis-[45%] custom-gallery pt-12">
         <p-galleria
-          [value]="images"
+          [value]="project.images"
           [containerStyle]="{ 'max-width': '100%' }"
-          [numVisible]="4"
+          [numVisible]="9"
           [circular]="true"
           [showItemNavigators]="true"
-          [showThumbnails]="true"
+          [showThumbnails]="false"
+          [showIndicators]="true"
         >
-          <ng-template pTemplate="item" let-item>
+          <ng-template pTemplate="item" let-img>
             <img
-              [src]="'/assets/projects_images/JOBS/' + item.itemImageSrc"
-              style=" display: block"
+              (click)="showDialog(img, project.title)"
+              [src]="
+                '/assets/projects_images/' + project.title + '/' + img + '.JPG'
+              "
+              style="display: block"
+              class="h-[400px]"
             />
-          </ng-template>
-          <ng-template pTemplate="thumbnail" let-item>
-            <div>
-              <img
-                [src]="'/assets/projects_images/JOBS/' + item.itemImageSrc"
-                style="display: block"
-              />
-            </div>
           </ng-template>
         </p-galleria>
       </div>
       <div class="basis-[55%]">
-        <div class="uppercase font-bold text-[30px] flex ml-[50%]">
-          jobs
+        <a
+          href="{{ project.link }}"
+          target="_blank"
+          *ngIf="project.link"
+          class="uppercase font-bold text-[30px] flex ml-[50%]"
+        >
+          {{ project.title }}
           <img src="../assets/icons/dark mode icons/External Link.svg" alt="" />
+        </a>
+
+        <div
+          *ngIf="!project.link"
+          class="uppercase font-bold text-[30px] flex ml-[50%]"
+        >
+          {{ project.title }}
         </div>
         <div
           class="text-[20px] text-custom-grey p-7"
-          [innerHTML]="projects[0].description"
+          [innerHTML]="project.description"
         ></div>
 
-        <div class="flex pl-7 gap-3">
-          <div
-            class="bg-tool-bg border-tool-border border rounded-[5px] flex p-2 items-center gap-2"
-          >
-            <img
-              src="../assets/icons/tools/Angular.svg"
-              height="30"
-              width="30"
-              alt=""
-            />
-            <div class="uppercase">angular</div>
-          </div>
-          <div
-            class="bg-tool-bg border-tool-border border rounded-[5px] flex p-2 items-center gap-2"
-          >
-            <img
-              src="../assets/icons/tools/Angular.svg"
-              height="30"
-              width="30"
-              alt=""
-            />
-            <div class="uppercase">angular</div>
-          </div>
+        <div class="flex pl-7 gap-3 flex-wrap">
+          <app-project-tools
+            *ngFor="let tool of project.tools"
+            [tool]="tool"
+          ></app-project-tools>
         </div>
       </div>
     </div>
   </div>
+  <p-dialog
+    [(visible)]="visible"
+    [modal]="true"
+    [style]="{ width: '95vw', height: '95vh' }"
+    [draggable]="false"
+    [maximizable]="false"
+  >
+    <div class="flex flex-col items-center">
+      <img
+        [src]="
+          '/assets/projects_images/' +
+          selectedTitle +
+          '/' +
+          selectedImage +
+          '.JPG'
+        "
+      />
+    </div>
+  </p-dialog>
 </section>
 
 <hr class="my-20 w-[50vw] mx-auto" #contact />
@@ -229,7 +241,11 @@
           />
           <p>+216 22 247 152</p>
         </div>
-        <div class="flex items-center gap-3">
+        <a
+          href="https://www.linkedin.com/in/fedi-hamdi-505706212/"
+          target="_blank"
+          class="flex items-center gap-3 hover:scale-x-95 transition-transform"
+        >
           <img
             src="../assets/icons/dark mode icons/LinkedIn.svg"
             width="38"
@@ -237,8 +253,13 @@
             alt=""
           />
           <p>Fedi Hamdi</p>
-        </div>
-        <div class="flex items-center gap-3">
+        </a>
+
+        <a
+          href="https://github.com/fedihamdi7"
+          target="_blank"
+          class="flex items-center gap-3 hover:scale-x-95 transition-transform"
+        >
           <img
             src="../assets/icons/dark mode icons/GitHub.svg"
             width="38"
@@ -246,7 +267,8 @@
             alt=""
           />
           <p>Fedi Hamdi</p>
-        </div>
+        </a>
+
         <div class="flex items-center gap-3">
           <img
             src="../assets/icons/dark mode icons/Location.svg"
@@ -254,7 +276,7 @@
             height="38"
             alt=""
           />
-          <p>Fedi Hamdi</p>
+          <p>Tunis, Tunisia</p>
         </div>
       </div>
     </div>
@@ -293,7 +315,7 @@
 
         <button
           type="submit"
-          class="mt-6 bg-transparent border hover:bg-custom-grey hover:text-black text-white font-bold py-2 px-4 rounded"
+          class="mt-6 bg-transparent border hover:bg-custom-grey hover:text-black text-white font-bold py-2 px-4 rounded transition-colors duration-200"
         >
           Send Message
         </button>

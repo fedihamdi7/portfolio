@@ -11,11 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { ButtonModule } from 'primeng/button';
 import { ScrollTopModule } from 'primeng/scrolltop';
-
+import { ProjectToolsComponent } from './project-tools/project-tools.component';
+import { DialogModule } from 'primeng/dialog';
 @NgModule({
   declarations: [
     AppComponent,
-    CardComponent
+    CardComponent,
+    ProjectToolsComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { ScrollTopModule } from 'primeng/scrolltop';
     BrowserAnimationsModule,
     ButtonModule,
     ReactiveFormsModule,
-    ScrollTopModule
+    ScrollTopModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

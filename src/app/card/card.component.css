@@ -1,0 +1,14 @@
+#card::before {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2); /* Adjust the color and opacity as needed */
+   
+    pointer-events: none;
+    transition: transform 0.2s ease-out;
+  }
+  
+  #card:hover::before {
+    width: 50px; /* Adjust the size of the circle on hover */
+    height: 50px;
+  }
