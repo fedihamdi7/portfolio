@@ -8,7 +8,7 @@ export class ThemeService {
 
   constructor() { }
 
-  private darkModeSubject = new BehaviorSubject<boolean>(false);
+  private darkModeSubject = new BehaviorSubject<boolean>(true);
 
   getDarkMode(): Observable<boolean> {
     return this.darkModeSubject.asObservable();
