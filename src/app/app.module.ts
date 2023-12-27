@@ -13,6 +13,7 @@ import { ButtonModule } from 'primeng/button';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { ProjectToolsComponent } from './project-tools/project-tools.component';
 import { DialogModule } from 'primeng/dialog';
+import {HttpClientModule} from  '@angular/common/http'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { DialogModule } from 'primeng/dialog';
     ButtonModule,
     ReactiveFormsModule,
     ScrollTopModule,
-    DialogModule
+    DialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

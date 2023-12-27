@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostBinding, ViewChild } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { FormControl, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,6 @@ export class AppComponent {
     subject: new FormControl(),
     message: new FormControl(),
   });
-  
 
   projects = [
     {
@@ -65,7 +65,10 @@ export class AppComponent {
       images: this.generateStrings(22, 'CLS-RH'),
     },
   ];
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private themeService: ThemeService,
+    private http: HttpClient,
+  ) {
     this.themeService.getDarkMode().subscribe((darkMode: boolean) => {
       this.isDarkMode = darkMode;
       // Default to dark mode for the body
@@ -147,5 +150,18 @@ export class AppComponent {
     this.selectedImage = img;
     this.selectedTitle = title;
     this.visible = true;
+  }
+
+  DownloadResume() {
+    fetch('../assets/resume/CV_FEDI_HAMDI.pdf')
+    .then(response => response.blob())
+    .then(blob => {
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'CV_FEDI_HAMDI.pdf';
+      a.click();
+    })
+    .catch((error) => console.error(error));
   }
 }
