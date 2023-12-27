@@ -1,18 +1,18 @@
-<div *ngIf="event" class="bg-custom-card-bg p-6 rounded-[35px] relative overflow-hidden" >
-  <div class="text-[28px] font-bold text-yellow-300 ">
+<div *ngIf="event" class="dark:bg-custom-card-bg p-6 rounded-[35px] relative overflow-hidden bg-blue-900" >
+  <div class="text-[28px] font-bold dark:text-yellow-300 ">
       {{event.title}}
     </div>
-    <div class="text-custom-grey text-[22px]">
+    <div class="dark:text-custom-grey text-[22px]">
       {{event.place}}
     </div>
-    <div class="text-custom-grey text-[16px] font-bold">
+    <div class="dark:text-custom-grey text-[16px] font-bold">
       {{event.date}}
     </div>
-    <div class="text-custom-grey text-[20px] py-6">
+    <div class="dark:text-custom-grey text-[20px] py-6">
       {{event.description}}
     </div>
     <div class="flex gap-5 align-center">
-      <span class="text-[22px] text-custom-grey mt-2">Tools : </span>
+      <span class="text-[22px] dark:text-custom-grey mt-2">Tools : </span>
       <span *ngFor="let tool of event.tools">
         <img src="../assets/icons/tools/{{tool}}.svg" alt="{{tool}}" pTooltip="{{tool}}">
       </span>

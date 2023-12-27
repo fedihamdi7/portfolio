@@ -1,15 +1,19 @@
 
-
 ::ng-deep .p-galleria .p-galleria-indicators .p-galleria-indicator button {
-    background-color: #263238;
+    background-color: #61524c;
     width: 1rem;
     height: 1rem;
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
     border-radius: 50%;
 }
 
+
 ::ng-deep .p-galleria .p-galleria-indicators .p-galleria-indicator.p-highlight button {
-    background-color: #e6e19e;
+    background-color: #c4c19b;
+}
+
+::ng-deep .p-galleria-indicators{
+    margin-top: 20px;
 }
 @keyframes bounce {
     0%, 100% {

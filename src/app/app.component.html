@@ -1,12 +1,19 @@
 <img
+*ngIf="isDarkMode"
   src="../assets/blob/header_blob.svg"
+  alt="header_blob"
+  class="absolute right-0 pointer-events-none"
+/>
+<img
+*ngIf="!isDarkMode"
+  src="../assets/blob/light_mode/header_blob.svg"
   alt="header_blob"
   class="absolute right-0 pointer-events-none"
 />
 
 <section class="sticky top-0 z-50">
   <div
-    class="bg-teal-600 text-white p-5 font-semibold text-lg shadow-lg dark:bg-black"
+    class="dark:text-white p-5 font-semibold text-lg bg-blue-900 shadow dark:bg-black"
   >
     <div class="flex justify-between items-center">
       <img
@@ -15,7 +22,7 @@
         alt="LOGO_FEDI_HAMDI"
       />
       <div class="basis-[500px] flex justify-around max-md:basis-0">
-        <div class="flex justify-around w-full max-md:hidden tracking-[.25em]">
+        <div class="flex justify-around w-full max-md:hidden tracking-[.25em] ">
           <a (click)="scrollToExperience()" class="cursor-pointer">
             EXPERIENCE
           </a>
@@ -26,7 +33,7 @@
           class="flex transition-transform hover:scale-125 align-middle"
           (click)="toggleDarkMode()"
         >
-          <span *ngIf="!isDarkMode" class="material-symbols-rounded"
+          <span *ngIf="!isDarkMode" class="material-symbols-rounded "
             >dark_mode</span
           >
           <span *ngIf="isDarkMode" class="material-symbols-rounded"
@@ -41,11 +48,14 @@
 <section class="pl-48 pt-36 container">
   <div class="flex">
     <div class="basis-3/5">
-      <div class="text-[67px] font-bold">
+      <div class="text-[67px] font-bold text-black dark:text-white">
         Hi, <br />
-        My name is <span class="uppercase text-custom-blue"> fedi hamdi </span>
+        My name is
+        <span class="uppercase dark:text-custom-blue text-blue-900">
+          fedi hamdi
+        </span>
       </div>
-      <p class="text-custom-grey">
+      <p class="dark:text-custom-grey text-gray-800">
         I'm a passionate full-stack developer from Tunisia with a focus on
         creating user-friendly applications.
       </p>
@@ -57,18 +67,22 @@
             class="hover:scale-110 transition-all"
             href="https://www.linkedin.com/in/fedi-hamdi-505706212/"
             target="_blank"
-            ><img src="../assets/icons/dark mode icons/LinkedIn.svg" alt=""
-          /></a>
+            >
+            <img *ngIf="isDarkMode" src="../assets/icons/dark mode icons/LinkedIn.svg" alt=""/> 
+            <img *ngIf="!isDarkMode" src="../assets/icons/light mode icons/LinkedIn.svg" alt=""/> 
+          </a>
           <a
             class="hover:scale-110 transition-all"
             href="https://github.com/fedihamdi7"
             target="_blank"
-            ><img src="../assets/icons/dark mode icons/GitHub.svg" alt=""
-          /></a>
+            >
+            <img *ngIf="isDarkMode" src="../assets/icons/dark mode icons/GitHub.svg" alt=""/>
+            <img *ngIf="!isDarkMode" src="../assets/icons/light mode icons/GitHub.svg" alt=""/>
+          </a>
         </div>
         <div class="mt-10">
           <button
-            class="bg-transparent text-white rounded-full border-[3px] border-white px-5 py-3 font-semibold flex gap-2 hover:scale-105 transition-transform duration-300 ease-in-out"
+            class="bg-transparent dark:text-white text-black rounded-full border-[3px] dark:border-white border-black px-5 py-3 font-semibold flex gap-2 hover:scale-105 transition-transform duration-300 ease-in-out"
           >
             Download Resume
             <span class="material-symbols-rounded">download</span>
@@ -77,26 +91,37 @@
       </div>
     </div>
     <div class="ml-24">
-      <img src="../assets/Avatar_Fedi.svg" alt="Avatar_Fedi" />
+      <img *ngIf="isDarkMode" src="../assets/Avatar_Fedi.svg" alt="Avatar_Fedi" />
+      <img *ngIf="!isDarkMode" src="../assets/Avatar_Fedi_Light.svg" alt="Avatar_Fedi" />
     </div>
   </div>
 </section>
 <div class="flex justify-center mt-20 bounce">
-  <span class="material-symbols-rounded text-[50px]"
+  <span class="material-symbols-rounded text-[50px] dark:text-white text-black"
     >keyboard_double_arrow_down</span
   >
 </div>
 
 <img
+*ngIf="isDarkMode"
   src="../assets/blob/experience_blob.svg"
   alt="mid_blob"
   class="absolute pointer-events-none"
 />
+<img
+*ngIf="!isDarkMode"
+
+  src="../assets/blob/light_mode/experience_blob.svg"
+  alt="mid_blob"
+  class="absolute pointer-events-none -z-10"
+/>
 
 <section #experience>
   <header class="flex flex-col items-center mt-20">
-    <div class="font-bold text-[46px] uppercase">MY EXPERIENCE</div>
-    <div class="text-center w-[50vw] text-custom-grey">
+    <div class="font-bold text-[46px] uppercase text-black dark:text-white">
+      MY EXPERIENCE
+    </div>
+    <div class="text-center w-[50vw] dark:text-custom-grey text-gray-800">
       A snapshot of my professional journey. Dive into impactful internships and
       work experiences that shape my expertise. Each role contributes to a
       dynamic skill set, reflecting my commitment to growth and hands-on
@@ -120,18 +145,20 @@
 
 <section #projects_section>
   <header class="flex flex-col items-center mt-20">
-    <div class="font-bold text-[46px] uppercase">My Projects</div>
-    <div class="text-center w-[50vw] text-custom-grey">
+    <div class="font-bold text-[46px] uppercase text-black dark:text-white">
+      My Projects
+    </div>
+    <div class="text-center w-[50vw] dark:text-custom-grey text-gray-800">
       A blend of my academic and personal projects, showcasing a passion for
-      problem-solving and creativity.
+      problem-solving and creativity. <br>
+      "It ain't much, but it's honest work"
     </div>
   </header>
 
   <!-- Projects cards -->
   <div class="flex place-content-center mt-10" *ngFor="let project of projects">
     <div
-      class="flex w-[95vw] p-5 rounded-[21px]"
-      style="background-color: #212121"
+      class="flex w-[95vw] p-5 rounded-[21px] dark:bg-slate-900 bg-blue-900 border border-white"
     >
       <div class="basis-[45%] custom-gallery pt-12">
         <p-galleria
@@ -150,7 +177,9 @@
                 '/assets/projects_images/' + project.title + '/' + img + '.JPG'
               "
               style="display: block"
-              class="h-[400px]"
+              class="h-[400px] cursor-pointer"
+              pTooltip="Click to enlarge"
+              tooltipPosition="top"
             />
           </ng-template>
         </p-galleria>
@@ -207,25 +236,47 @@
   </p-dialog>
 </section>
 
-<hr class="my-20 w-[50vw] mx-auto" #contact />
+<hr
+  class="my-20 w-[50vw] mx-auto border border-black dark:border-white"
+  #contact
+/>
 
 <section class="relative text-custom-grey">
   <img
+  *ngIf="isDarkMode"
     src="../assets/blob/footer_blob.svg"
     alt="footer_blob"
     class="absolute pointer-events-none bottom-[-14%] -z-10"
   />
+  <img
+  *ngIf="!isDarkMode"
+    src="../assets/blob/light_mode/footer_blob.svg"
+    alt="footer_blob"
+    class="absolute pointer-events-none bottom-[-14%] -z-10"
+  />
   <header class="flex flex-col items-center mt-20">
-    <div class="font-bold text-[46px] uppercase text-white">contact me</div>
-    <div class="text-center w-[50vw]">Reach out and let's work together.</div>
+    <div class="font-bold text-[46px] uppercase text-black dark:text-white">
+      contact me
+    </div>
+    <div class="text-center w-[50vw] dark:text-custom-grey text-gray-800">
+      Reach out and let's work together.
+    </div>
   </header>
 
   <div class="flex">
     <div class="basis-[50vw] p-20 pl-72">
-      <div class="flex flex-col gap-3 mt-14">
+      <div class="flex flex-col gap-3 mt-14 dark:text-custom-grey text-black">
         <div class="flex items-center gap-3">
           <img
+            *ngIf="isDarkMode"
             src="../assets/icons/dark mode icons/Envelope.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <img
+            *ngIf="!isDarkMode"
+            src="../assets/icons/light mode icons/Envelope.svg"
             width="38"
             height="38"
             alt=""
@@ -234,7 +285,15 @@
         </div>
         <div class="flex items-center gap-3">
           <img
+            *ngIf="isDarkMode"
             src="../assets/icons/dark mode icons/Ringer Volume.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <img
+            *ngIf="!isDarkMode"
+            src="../assets/icons/light mode icons/Phone.svg"
             width="38"
             height="38"
             alt=""
@@ -244,10 +303,18 @@
         <a
           href="https://www.linkedin.com/in/fedi-hamdi-505706212/"
           target="_blank"
-          class="flex items-center gap-3 hover:scale-x-95 transition-transform"
+          class="flex items-center gap-3 hover:scale-x-95 transition-transform w-fit"
         >
           <img
+            *ngIf="isDarkMode"
             src="../assets/icons/dark mode icons/LinkedIn.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <img
+            *ngIf="!isDarkMode"
+            src="../assets/icons/light mode icons/LinkedIn.svg"
             width="38"
             height="38"
             alt=""
@@ -258,10 +325,18 @@
         <a
           href="https://github.com/fedihamdi7"
           target="_blank"
-          class="flex items-center gap-3 hover:scale-x-95 transition-transform"
+          class="flex items-center gap-3 hover:scale-x-95 transition-transform w-fit"
         >
           <img
+            *ngIf="isDarkMode"
             src="../assets/icons/dark mode icons/GitHub.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <img
+            *ngIf="!isDarkMode"
+            src="../assets/icons/light mode icons/GitHub.svg"
             width="38"
             height="38"
             alt=""
@@ -271,7 +346,15 @@
 
         <div class="flex items-center gap-3">
           <img
+            *ngIf="isDarkMode"
             src="../assets/icons/dark mode icons/Location.svg"
+            width="38"
+            height="38"
+            alt=""
+          />
+          <img
+            *ngIf="!isDarkMode"
+            src="../assets/icons/light mode icons/Location.svg"
             width="38"
             height="38"
             alt=""
@@ -281,13 +364,18 @@
       </div>
     </div>
     <div class="p-24">
-      <p>You can reach me via email or through this form</p>
+      <p class="text-gray-800 dark:text-custom-grey">
+        You can reach me via email or through this form
+      </p>
 
-      <form [formGroup]="form" class="mt-8">
+      <form
+        [formGroup]="form"
+        class="mt-8 dark:placeholder-gray-500 dark:text-white text-gray-800"
+      >
         <div>
           <label for=""> Email </label>
           <input
-            class="w-full px-3 py-2 placeholder-gray-500 text-white rounded-md focus:outline-none focus:shadow-outline"
+            class="w-full px-3 py-2 rounded-md focus:outline-none focus:shadow-outline bg-white dark:bg-gray-800 border border-black dark:border-white"
             type="text"
             placeholder="Email@email.com"
             formControlName="email"
@@ -296,7 +384,7 @@
         <div class="mt-6">
           <label for=""> Subject </label>
           <input
-            class="w-full px-3 py-2 placeholder-gray-500 text-white rounded-md focus:outline-none focus:shadow-outline"
+            class="w-full px-3 py-2 rounded-md focus:outline-none focus:shadow-outline bg-white dark:bg-gray-800 border border-black dark:border-white"
             type="text"
             placeholder="Subject"
             formControlName="subject"
@@ -305,7 +393,7 @@
         <div class="mt-6">
           <label for=""> Message </label>
           <textarea
-            class="text-white resize-none h-48 w-full px-3 py-2 placeholder-gray-500 rounded-md focus:outline-none focus:shadow-outline"
+            class="resize-none h-48 w-full px-3 py-2 rounded-md focus:outline-none focus:shadow-outline bg-white dark:bg-gray-800 border border-black dark:border-white"
             type="text"
             placeholder="Message"
             formControlName="message"
@@ -315,7 +403,7 @@
 
         <button
           type="submit"
-          class="mt-6 bg-transparent border hover:bg-custom-grey hover:text-black text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+          class="mt-6 bg-transparent border hover:bg-custom-grey dark:hover:text-black border-black dark:border-white dark:text-white font-bold py-2 px-4 rounded transition-colors duration-200"
         >
           Send Message
         </button>
@@ -331,9 +419,8 @@
     alt="LOGO_FEDI_HAMDI"
   />
 
-  <p class="text-custom-grey">
-    Copyright © 2023 - Designed By Figma and Built with Angular, Angular
-    Material, NodeJs.
+  <p class="text-gray-800 dark:text-custom-grey">
+    Copyright © 2023 - Designed By Figma and Built with Angular, NodeJs, TailwindCSS and PrimeNG.
   </p>
 </footer>
 <p-scrollTop></p-scrollTop>

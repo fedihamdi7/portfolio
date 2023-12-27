@@ -16,38 +16,7 @@ export class AppComponent {
     subject: new FormControl(),
     message: new FormControl(),
   });
-  // images = [
-  //   {
-  //     itemImageSrc: 'login.JPG',
-  //     alt: 'Description for Image 1',
-  //     title: 'Title 1',
-  //   },
-  //   {
-  //     itemImageSrc: 'register.JPG',
-  //     alt: 'Description for Image 1',
-  //     title: 'Title 1',
-  //   },
-  //   {
-  //     itemImageSrc: 'login.JPG',
-  //     alt: 'Description for Image 1',
-  //     title: 'Title 1',
-  //   },
-  //   {
-  //     itemImageSrc: 'login.JPG',
-  //     alt: 'Description for Image 1',
-  //     title: 'Title 1',
-  //   },
-  //   {
-  //     itemImageSrc: 'register.JPG',
-  //     alt: 'Description for Image 1',
-  //     title: 'Title 1',
-  //   },
-  //   {
-  //     itemImageSrc: 'login.JPG',
-  //     alt: 'Description for Image 1',
-  //     title: 'Title 1',
-  //   },
-  // ];
+  
 
   projects = [
     {
@@ -100,7 +69,9 @@ export class AppComponent {
     this.themeService.getDarkMode().subscribe((darkMode: boolean) => {
       this.isDarkMode = darkMode;
       // Default to dark mode for the body
-      document.body.classList.add('dark');
+      if (this.isDarkMode) {
+        document.body.classList.add('dark');
+      }
     });
 
     this.events = [
