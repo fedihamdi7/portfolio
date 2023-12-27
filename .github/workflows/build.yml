@@ -1,18 +1,29 @@
-name: Build and Deploy
-on: [push]
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Change this to your main branch
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: 14
-    - name: Install Dependencies
-      run: npm ci
-    - name: Build
-      run: ng build --base-href="https://fedihamdi7.github.io/portfolio/"
-    - name: Deploy
-      run: npx angular-cli-ghpages --dir=dist/portfolio
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and deploy to GitHub Pages
+        run: |
+          npm run build -- --base-href="https://fedihamdi7.github.io/portfolio/"
+          npx ngh --dir=dist/portfolio
+        env:
+          CI: true
