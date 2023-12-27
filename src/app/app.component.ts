@@ -82,7 +82,7 @@ onResize(eventResise : any) {
   }
 
   DownloadResume() {
-    fetch('../assets/resume/CV_FEDI_HAMDI.pdf')
+    fetch('assets/resume/CV_FEDI_HAMDI.pdf')
       .then((response) => response.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
