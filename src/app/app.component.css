@@ -36,3 +36,10 @@ body:not(.dark) :host /deep/  .p-dialog .p-dialog-header{
 body:not(.dark) :host /deep/  .p-dialog .p-dialog-content{
     background-color: #1e3a8a;
 }
+
+
+@media screen and (max-width : 430px){
+    .section{
+        padding-left: 25px;
+    }
+}

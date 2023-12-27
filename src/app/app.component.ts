@@ -14,7 +14,7 @@ export class AppComponent {
   @ViewChild('experience') experience: ElementRef | undefined;
   @ViewChild('projects_section') projects_section: ElementRef | undefined;
   @ViewChild('contact') contact: ElementRef | undefined;
-
+  align = 'alternate';
   displayBasic: boolean = false;
   form: FormGroup = new FormGroup({
     email: new FormControl(),
@@ -37,6 +37,10 @@ export class AppComponent {
         document.body.classList.add('dark');
       }
     });
+
+    if (window.innerWidth < 768) {
+      this.align = 'stacazk';
+    }
   }
 
   toggleDarkMode() {
