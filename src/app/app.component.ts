@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, ViewChild } from '@angular/core';
 import { ThemeService } from './services/theme.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,7 @@ export class AppComponent {
   @ViewChild('experience') experience: ElementRef | undefined;
   @ViewChild('projects_section') projects_section: ElementRef | undefined;
   @ViewChild('contact') contact: ElementRef | undefined;
-  align = 'alternate';
+  align :string;
   displayBasic: boolean = false;
   form: FormGroup = new FormGroup({
     email: new FormControl(),
@@ -40,9 +40,19 @@ export class AppComponent {
 
     if (window.innerWidth < 768) {
       this.align = 'stacazk';
+    }else{
+      this.align='alternate'
     }
   }
 
+  @HostListener('window:resize', ['$eventResise'])
+onResize(eventResise : any) {
+  if (window.innerWidth < 768) {
+    this.align = 'stack';
+  } else {
+    this.align = 'alternate';
+  }
+}
   toggleDarkMode() {
     this.themeService.toggleDarkMode();
   }
