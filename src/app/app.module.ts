@@ -14,6 +14,8 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { ProjectToolsComponent } from './project-tools/project-tools.component';
 import { DialogModule } from 'primeng/dialog';
 import {HttpClientModule} from  '@angular/common/http'; 
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,9 +33,12 @@ import {HttpClientModule} from  '@angular/common/http';
     ReactiveFormsModule,
     ScrollTopModule,
     DialogModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

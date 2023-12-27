@@ -3,6 +3,7 @@ import { ThemeService } from './services/theme.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from './services/data.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,8 @@ export class AppComponent {
   constructor(
     private themeService: ThemeService,
     private http: HttpClient,
-    private dataService: DataService
+    private dataService: DataService,
+    private messageService: MessageService
   ) {
     this.themeService.getDarkMode().subscribe((darkMode: boolean) => {
       this.isDarkMode = darkMode;
@@ -90,5 +92,23 @@ onResize(eventResise : any) {
         a.click();
       })
       .catch((error) => console.error(error));
+  }
+  emailLoading = false;
+  onSubmit() {
+    const formData = { ...this.form.value };
+    if (!formData.email || !formData.subject || !formData.message) {
+      this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Please fill all fields' });
+      
+      return;
+    }
+    this.emailLoading = true;
+    this.http.post('https://portfolio-backend-three-phi.vercel.app/send-email', formData)
+    .subscribe(response => {
+    });
+    setTimeout(() => {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Email sent successfully' });
+      this.emailLoading = false;
+    this.form.reset();
+    }, 1000);
   }
 }

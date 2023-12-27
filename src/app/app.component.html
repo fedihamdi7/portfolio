@@ -423,6 +423,7 @@
         <form
           [formGroup]="form"
           class="mt-8 dark:placeholder-gray-500 dark:text-white text-gray-800"
+          (submit)="onSubmit()"
         >
           <div>
             <label for=""> Email </label>
@@ -455,9 +456,24 @@
 
           <button
             type="submit"
-            class="mt-6 bg-transparent border hover:bg-custom-grey dark:hover:text-black border-black dark:border-white dark:text-white font-bold py-2 px-4 rounded transition-colors duration-200"
+            class="flex mt-6 bg-transparent border hover:bg-custom-grey dark:hover:text-black border-black dark:border-white dark:text-white font-bold py-2 px-4 rounded transition-colors duration-200"
           >
-            Send Message
+          Send Message
+          <svg *ngIf="emailLoading" class="animate-spin h-5 w-5 ml-3" viewBox="0 0 24 24">
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+            ></path>
+          </svg>
           </button>
         </form>
       </div>
@@ -479,4 +495,6 @@
     </p>
   </footer>
   <p-scrollTop></p-scrollTop>
+  <p-toast></p-toast>
+
 </div>
