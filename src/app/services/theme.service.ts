@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ export class ThemeService {
 
   constructor() { }
 
-  private darkModeSubject = new BehaviorSubject<boolean>(true);
+  private darkModeSubject = new BehaviorSubject<boolean>(false);
 
   getDarkMode(): Observable<boolean> {
     return this.darkModeSubject.asObservable();

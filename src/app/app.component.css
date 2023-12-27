@@ -9,7 +9,7 @@
 
 
 ::ng-deep .p-galleria .p-galleria-indicators .p-galleria-indicator.p-highlight button {
-    background-color: #c4c19b;
+    background-color: #ffffff;
 }
 
 ::ng-deep .p-galleria-indicators{
@@ -28,4 +28,11 @@
 
 .bounce {
     animation: bounce 1s infinite;
+}
+
+body:not(.dark) :host /deep/  .p-dialog .p-dialog-header{
+    background-color: #1e3a8a;
+}
+body:not(.dark) :host /deep/  .p-dialog .p-dialog-content{
+    background-color: #1e3a8a;
 }
