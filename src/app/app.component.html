@@ -1,17 +1,18 @@
+<div class="max-md:overflow-hidden">
 <img
 *ngIf="isDarkMode"
   src="../assets/blob/header_blob.svg"
   alt="header_blob"
-  class="absolute right-0 pointer-events-none"
+  class="absolute right-0 pointer-events-none -z-10"
 />
 <img
 *ngIf="!isDarkMode"
   src="../assets/blob/light_mode/header_blob.svg"
   alt="header_blob"
-  class="absolute right-0 pointer-events-none"
+  class="absolute right-0 pointer-events-none -z-10"
 />
 
-<section class="sticky top-0 z-50">
+<section class="sticky top-0 z-50 max-md:fixed w-screen">
   <div
     class="dark:text-white p-5 font-semibold text-lg bg-blue-900 shadow dark:bg-black"
   >
@@ -45,23 +46,23 @@
   </div>
 </section>
 
-<section class="pl-48 pt-36 container">
-  <div class="flex">
+<section class="pl-48 pt-36 container max-md:pt-10">
+  <div class="flex max-md:flex-col-reverse">
     <div class="basis-3/5">
-      <div class="text-[67px] font-bold text-black dark:text-white">
+      <div class="text-[67px] max-md:text-[45px] font-bold text-black dark:text-white">
         Hi, <br />
         My name is
         <span class="uppercase dark:text-custom-blue text-blue-900">
           fedi hamdi
         </span>
       </div>
-      <p class="dark:text-custom-grey text-gray-800">
+      <p class="dark:text-custom-grey text-gray-800 ">
         I'm a passionate full-stack developer from Tunisia with a focus on
         creating user-friendly applications.
       </p>
 
-      <div class="mt-20">
-        <div class="flex">
+      <div class="mt-20 max-md:mt-10 max-md:flex max-md:items-center max-md:gap-7">
+        <div class="flex ">
           <a
             class="hover:scale-110 transition-all"
             href="https://www.linkedin.com/in/fedi-hamdi-505706212/"
@@ -79,7 +80,7 @@
             <img *ngIf="!isDarkMode" src="../assets/icons/light mode icons/GitHub.svg" alt=""/>
           </a>
         </div>
-        <div class="mt-10">
+        <div class="mt-10 max-md:mt-0">
           <button
           (click)="DownloadResume()"
             class="bg-transparent dark:text-white text-black rounded-full border-[3px] dark:border-white border-black px-5 py-3 font-semibold flex gap-2 hover:scale-105 transition-transform duration-300 ease-in-out"
@@ -90,8 +91,8 @@
         </div>
       </div>
     </div>
-    <div class="ml-24">
-      <img *ngIf="isDarkMode" src="../assets/Avatar_Fedi.svg" alt="Avatar_Fedi" />
+    <div class="ml-24 max-md:m-[90px] max-md:mb-0">
+      <img *ngIf="isDarkMode" src="../assets/Avatar_Fedi.svg" alt="Avatar_Fedi" class="max-md" />
       <img *ngIf="!isDarkMode" src="../assets/Avatar_Fedi_Light.svg" alt="Avatar_Fedi" />
     </div>
   </div>
@@ -121,7 +122,7 @@
     <div class="font-bold text-[46px] uppercase text-black dark:text-white">
       MY EXPERIENCE
     </div>
-    <div class="text-center w-[50vw] dark:text-custom-grey text-gray-900">
+    <div class="text-center w-[50vw] dark:text-custom-grey text-gray-900 max-md:w-[80vw]">
       A snapshot of my professional journey. Dive into impactful internships and
       work experiences that shape my expertise. Each role contributes to a
       dynamic skill set, reflecting my commitment to growth and hands-on
@@ -129,10 +130,10 @@
     </div>
   </header>
 
-  <p-timeline [value]="events" align="alternate" styleClass="mt-20">
+  <p-timeline [value]="events" align="alternatex" styleClass="mt-20 max-md:ml-[-92vw] ">
     <ng-template pTemplate="marker" let-event>
       <span>
-        <span [ngClass]="'material-symbols-rounded'">
+        <span [ngClass]="'material-symbols-rounded max-md:mt-10' ">
           radio_button_unchecked
         </span>
       </span>
@@ -158,7 +159,7 @@
   <!-- Projects cards -->
   <div class="flex place-content-center mt-10" *ngFor="let project of projects">
     <div
-      class="flex w-[95vw] p-5 rounded-[21px] dark:bg-slate-900 bg-blue-900 border border-white"
+      class="flex w-[95vw] p-5 rounded-[21px] dark:bg-slate-900 bg-blue-900 border border-white max-md:flex-col-reverse max-md:w-[90vw] max-md:mx-auto max-md:mt-10"
     >
       <div class="basis-[45%] custom-gallery pt-12">
         <p-galleria
@@ -189,7 +190,7 @@
           href="{{ project.link }}"
           target="_blank"
           *ngIf="project.link"
-          class="uppercase font-bold text-[30px] flex ml-[50%]"
+          class="uppercase font-bold text-[30px] flex ml-[50%] max-md:ml-[41%]"
         >
           {{ project.title }}
           <img src="../assets/icons/dark mode icons/External Link.svg" alt="" />
@@ -197,7 +198,7 @@
 
         <div
           *ngIf="!project.link"
-          class="uppercase font-bold text-[30px] flex ml-[50%]"
+          class="uppercase font-bold text-[30px] flex ml-[50%] max-md:ml-[41%]"
         >
           {{ project.title }}
         </div>
@@ -263,7 +264,7 @@
     </div>
   </header>
 
-  <div class="flex">
+  <div class="flex max-md:flex-col-reverse">
     <div class="basis-[50vw] p-20 pl-72">
       <div class="flex flex-col gap-3 mt-14 dark:text-custom-grey text-black">
         <div class="flex items-center gap-3">
@@ -412,15 +413,16 @@
   </div>
 </section>
 
-<footer class="flex justify-around items-center">
+<footer class="flex justify-around items-center max-md:flex-col max-md:gap-7">
   <img
     src="../assets/LOGO_FEDI_HAMDI.svg"
     class="w-28 pl-5"
     alt="LOGO_FEDI_HAMDI"
   />
 
-  <p class="text-gray-800 dark:text-custom-grey">
+  <p class="text-black dark:text-custom-grey max-md:text-[.75em] max-md:text-center">
     Copyright © 2023 - Designed By Figma and Built with Angular, NodeJs, TailwindCSS and PrimeNG.
   </p>
 </footer>
 <p-scrollTop></p-scrollTop>
+</div>
