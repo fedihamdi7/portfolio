@@ -21,6 +21,15 @@
       }
     },
     {
+      "label": "build to github pages",
+      "type": "shell",
+      "command": "ng build --base-href='https://fedihamdi7.github.io/portfolio/' && ngh --dir=dist/portfolio",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
       "type": "npm",
       "script": "test",
       "isBackground": true,
