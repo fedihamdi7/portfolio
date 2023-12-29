@@ -1,2 +1,0 @@
-#!/bin/sh
-ng build --base-href="https://fedihamdi7.github.io/portfolio/" && ngh --dir=dist/portfolio
