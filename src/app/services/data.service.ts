@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
-
-  constructor() { }
-
-
+  constructor() {}
 
   generateStrings(number: number, str: string): string[] {
     let result = [];
@@ -17,9 +14,29 @@ export class DataService {
     return result;
   }
 
-
   getProjects() {
     return [
+      {
+        title: 'PORTFOLIO',
+        description: ` <p>This platform is a showcase of my skills and a journey through the projects that define my professional identity.</p>
+
+        <li>A display of my work.</li>
+        <li>Detailed project descriptions highlighting the challenges, solutions, and technologies used.</li>
+        <li>A user-friendly interface for seamless navigation, ensuring an engaging experience.</li>
+        
+        <p>Explore and get to know the diverse skills and perspectives that define my approach to Full Stack Developement. I'm excited to share my passio and discuss potential collaborations.</p>
+        
+        <p>Thank you for visiting, and I look forward to connecting with you!</p>
+  `,
+        tools: [
+          'Angular',
+          'Node Js',
+          'PrimeNG',
+          'Tailwindcss',
+          'Figma',
+        ],
+        images: this.generateStrings(3, 'PORTFOLIO'),
+      },
       {
         title: 'JOBS',
         link: 'https://github.com/fedihamdi7/jobs-frontend',
@@ -39,7 +56,7 @@ export class DataService {
       <li>Search and filtering options for job listings.</li>
       <li>Negotiation System: Facilitate communication between applicants and companies, allowing negotiation on where and when to have the interview.</li>
   `,
-        tools: ['Angular', 'Node Js', 'MongoDB', 'GitHub', 'PrimeNG', 'Figma'],
+        tools: ['Angular', 'Nestjs', 'MongoDB', 'GitHub', 'PrimeNG', 'Figma'],
         images: this.generateStrings(15, 'JOBS'),
       },
       {
