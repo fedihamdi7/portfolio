@@ -2,13 +2,11 @@
   <img
     *ngIf="isDarkMode"
     src="assets/blob/light_mode/header_blob.svg"
-    alt="header_blob"
     class="absolute right-0 pointer-events-none -z-10"
   />
   <img
     *ngIf="!isDarkMode"
     src="assets/blob/light_mode/header_blob.svg"
-    alt="header_blob"
     class="absolute right-0 pointer-events-none -z-10"
   />
 
@@ -115,18 +113,15 @@
           </div>
         </div>
       </div>
-      <div class="ml-24 max-md:m-[90px] max-md:mb-0">
+      <div class="ml-24 max-md:m-[90px] max-md:mb-0 relative ">
         <img
-          *ngIf="isDarkMode"
-          src="assets/Avatar_Fedi.svg"
-          alt="Avatar_Fedi"
-          class="max-md"
+          src="assets/Avatar_Fedi.png"
+          class="rounded-[20px] shadow-2xl shadow-black"
         />
-        <img
+        <!-- <img
           *ngIf="!isDarkMode"
-          src="assets/Avatar_Fedi_Light.svg"
-          alt="Avatar_Fedi"
-        />
+          src="assets/Avatar_Fedi_Light.png"
+        /> -->
       </div>
     </div>
   </section>
@@ -150,7 +145,7 @@
     class="absolute pointer-events-none -z-10"
   />
 
-  <section #experience>
+  <section #experience class="overflow-y-scroll pt-2">
     <header class="flex flex-col items-center mt-20">
       <div class="font-bold text-[46px] uppercase text-black dark:text-white">
         MY EXPERIENCE
@@ -183,7 +178,7 @@
     </p-timeline>
   </section>
 
-  <section #projects_section>
+  <section #projects_section class="overflow-y-scroll pt-2">
     <header class="flex flex-col items-center mt-20">
       <div class="font-bold text-[46px] uppercase text-black dark:text-white">
         My Projects
@@ -249,7 +244,7 @@
 
           <div
             *ngIf="!project.link"
-            class="uppercase font-bold text-[30px] flex ml-[50%] max-md:ml-[41%] max-[430px]:ml-[34%]"
+            class="uppercase font-bold text-[30px] flex ml-[50%] -translate-x-[20px] max-md:ml-[41%] max-[430px]:ml-[34%]"
           >
             {{ project.title }}
           </div>
