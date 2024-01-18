@@ -81,14 +81,20 @@ onResize(eventResise : any) {
     this.visible = true;
   }
 
-  DownloadResume() {
-    fetch('assets/resume/CV_FEDI_HAMDI.pdf')
+  dropdownVisible = false;
+
+  toggleDropdown() {
+    this.dropdownVisible = !this.dropdownVisible;
+  }
+
+  DownloadResume(language : string) {
+    fetch(`assets/resume/FEDI_HAMDI_RESUME_${language}.pdf`)
       .then((response) => response.blob())
       .then((blob) => {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'CV_FEDI_HAMDI.pdf';
+        a.download = `FEDI_HAMDI_RESUME_${language}.pdf`;
         a.click();
       })
       .catch((error) => console.error(error));

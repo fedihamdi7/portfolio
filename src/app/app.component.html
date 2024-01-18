@@ -104,16 +104,40 @@
           </div>
           <div class="mt-10 max-md:mt-0">
             <button
-              (click)="DownloadResume()"
+              (click)="toggleDropdown()"
               class="bg-transparent dark:text-white text-black rounded-full border-[3px] dark:border-white border-black px-5 py-3 font-semibold flex gap-2 hover:scale-105 transition-transform duration-300 ease-in-out"
             >
               Download Resume
               <span class="material-symbols-rounded">download</span>
             </button>
+            <div
+              *ngIf="dropdownVisible"
+              class="absolute mt-2 ml-4 w-48 rounded-md shadow-lg dark:bg-slate-700 bg-slate-900 dark:text-white ring-1 ring-black ring-opacity-5"
+            >
+              <div
+                class="py-1 cursor-pointer"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="options-menu"
+              >
+                <a
+                  (click)="DownloadResume('EN')"
+                  class="block px-4 py-2 text-sm  hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                  >English Version</a
+                >
+                <a
+                  (click)="DownloadResume('FR')"
+                  class="block px-4 py-2 text-sm  hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                  >French Version</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="ml-24 max-md:m-[90px] max-md:mb-0 relative ">
+      <div class="ml-24 max-md:m-[90px] max-md:mb-0 relative">
         <img
           src="assets/Avatar_Fedi.png"
           class="rounded-[20px] shadow-2xl shadow-black"
@@ -214,11 +238,7 @@
               <img
                 (click)="showDialog(img, project.title)"
                 [src]="
-                  'assets/projects_images/' +
-                  project.title +
-                  '/' +
-                  img +
-                  '.JPG'
+                  'assets/projects_images/' + project.title + '/' + img + '.JPG'
                 "
                 style="display: block"
                 class="h-[400px] cursor-pointer max-[430px]:h-[250px]"
@@ -236,10 +256,7 @@
             class="uppercase font-bold text-[30px] flex ml-[50%] max-md:ml-[41%] max-[430px]:ml-[34%]"
           >
             {{ project.title }}
-            <img
-              src="assets/icons/dark mode icons/External Link.svg"
-              alt=""
-            />
+            <img src="assets/icons/dark mode icons/External Link.svg" alt="" />
           </a>
 
           <div
@@ -453,29 +470,35 @@
             type="submit"
             class="flex mt-6 bg-transparent border hover:bg-custom-grey dark:hover:text-black border-black dark:border-white dark:text-white font-bold py-2 px-4 rounded transition-colors duration-200"
           >
-          Send Message
-          <svg *ngIf="emailLoading" class="animate-spin h-5 w-5 ml-3" viewBox="0 0 24 24">
-            <circle
-              class="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              stroke-width="4"
-            ></circle>
-            <path
-              class="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-            ></path>
-          </svg>
+            Send Message
+            <svg
+              *ngIf="emailLoading"
+              class="animate-spin h-5 w-5 ml-3"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              ></path>
+            </svg>
           </button>
         </form>
       </div>
     </div>
   </section>
 
-  <footer class="flex justify-around items-center max-md:flex-col max-md:gap-7 mb-[2%]">
+  <footer
+    class="flex justify-around items-center max-md:flex-col max-md:gap-7 mb-[2%]"
+  >
     <img
       src="assets/LOGO_FEDI_HAMDI.svg"
       class="w-28 pl-5"
@@ -491,5 +514,4 @@
   </footer>
   <p-scrollTop></p-scrollTop>
   <p-toast></p-toast>
-
 </div>
