@@ -28,13 +28,7 @@ export class DataService {
         
         <p>Thank you for visiting, and I look forward to connecting with you!</p>
   `,
-        tools: [
-          'Angular',
-          'Node Js',
-          'PrimeNG',
-          'Tailwindcss',
-          'Figma',
-        ],
+        tools: ['Angular', 'Node Js', 'PrimeNG', 'Tailwindcss', 'Figma'],
         images: this.generateStrings(3, 'PORTFOLIO'),
       },
       {
@@ -87,6 +81,14 @@ export class DataService {
 
   getEvents() {
     return [
+      {
+        title: 'Software Developer',
+        place: 'DevYourApp - Work',
+        date: 'February 2024 to Present',
+        description:
+          'I am currently working as an Angular Developer at DevYourApp, a Tunisian-Belgian startup. In this role, I am building two projects from scratch: the first is an online ticketing platform designed for public use, and the second is a stock management system tailored for use at ticket sales stands. These projects are allowing me to leverage my skills in Angular to create impactful solutions from the ground up.',
+        tools: ['Angular','Angular Material', 'Sass', 'PHP', 'Gitlab', 'Postman', 'MySQL'],
+      },
       {
         title: 'Software Programmer',
         place: 'VERMEG - Work',
